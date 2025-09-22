@@ -1,0 +1,145 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Bonafide Form - VMC</title>
+    <style>
+     
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f5f7fa;
+            margin: 0;
+            padding: 0;
+        }
+
+    
+        header {
+            background-color: #003366;
+            color: white;
+            padding: 20px 0;
+            text-align: center;
+            position: relative;
+        }
+
+        header img {
+            position: absolute;
+            left: 20px;
+            top: 10px;
+            width: 60px;
+            height: 60px;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 26px;
+            font-weight: bold;
+        }
+
+        header p {
+            margin: 5px 0 0 0;
+            font-size: 14px;
+        }
+
+       
+        .form-container {
+            background-color: #fff;
+            max-width: 600px;
+            margin: 40px auto;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+        }
+
+        .form-container h2 {
+            text-align: center;
+            color: #003366;
+            margin-bottom: 30px;
+            font-size: 24px;
+        }
+
+        form p {
+            margin-bottom: 20px;
+        }
+
+        input, select {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            font-size: 16px;
+            box-sizing: border-box;
+        }
+
+        button {
+            width: 100%;
+            padding: 14px;
+            background-color: #003366;
+            color: white;
+            font-size: 18px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #001f4d;
+        }
+    footer {
+            background-color: #003366;
+            color: white;
+            text-align: center;
+            padding: 15px 0;
+            margin-top: 50px;
+            font-size: 14px;
+        }
+
+        footer a {
+            color: #ffcc00;
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        @media (max-width: 600px) {
+            .form-container {
+                padding: 20px;
+                margin: 20px;
+            }
+
+            header img {
+
+     filter:drop-shadow(1px 1px 20px rgb(249, 249, 247));
+    height: 100px;
+    display: inline;
+    font-size: 200px;
+
+}
+
+        }
+    </style>
+</head>
+<body>
+   
+    <header>
+        <img src="{% static 'img/logo.png.png' %}" alt="College Logo">
+        <h1>Vishwabharti Mahavidalaya, CIDCO, Nanded</h1>
+    </header>
+
+    <div class="form-container">
+        <h2>Enter Student Details for Bonafide Certificate</h2>
+        <form method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit">Generate Bonafide</button>
+        </form>
+    </div>
+
+    <footer>
+    &copy; 2025 Vishwabharti Mahavidalaya. All Rights Reserved. | Designed & Developed by Momin Ramjan
+    </footer>
+</body>
+</html>

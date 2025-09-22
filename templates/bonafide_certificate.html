@@ -1,0 +1,165 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title> Design By: Momin Ramjan</title>
+<style>
+body { 
+    font-family: 'Georgia', serif; 
+    margin: 0; 
+    padding: 0; 
+    background: #f0f0f0; 
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.logo-top {
+    display: block;
+    margin: 0 auto 5px auto;  
+    width: 70px;
+    height: auto;
+}
+
+.certificate {
+    width: 100%;
+    padding: 40px 50px 50px 50px;
+    border: 3px solid #2c3e50; 
+    background-color: rgba(255, 255, 255, 0.95);
+    box-sizing: border-box;
+}
+
+.certificate-wrapper {
+    width: 800px;
+    padding: 30px 20px;
+    background: #fff url('{% static "img/vmclogo.jpg" %}') no-repeat center center;
+    background-size: 250px 250px;
+    box-shadow: 0 0 20px rgba(0,0,0,0.1);
+    box-sizing: border-box;
+    position: relative;
+}
+
+.header {
+    text-align: center;
+    position: relative;
+}
+
+.header h3 { 
+    margin: 0; 
+    font-size: 18px; 
+    font-weight: normal;
+ }
+.header h1 { 
+    margin: 5px 0 10px 0; 
+    font-size: 24px; 
+    font-weight: bold; 
+    letter-spacing: 1px;
+ }
+.header p.institute { 
+    text-align: center;
+     margin: 5px 0 15px 0;
+      font-size: 12px; 
+    }
+.header .ref-date { 
+    display: flex; 
+    justify-content: space-between; 
+    font-size: 12px; margin-top: 10px; 
+    margin-bottom: 20px;
+ }
+
+h2 {
+     text-align: center; 
+     text-decoration: underline; 
+     margin: 20px 0;
+      font-size: 22px;
+       letter-spacing: 1px;
+     }
+p { 
+    font-size: 14px; 
+    line-height: 1.6; 
+    text-align: justify; 
+}
+
+.qr {
+     margin-top: 30px;
+      text-align: center;
+     }
+.qr p { 
+    font-weight: bold; 
+    margin-bottom: 10px; 
+}
+
+.footer {
+     margin-top: 40px;
+      text-align: right;
+       font-size: 16px; 
+       font-weight: bold; 
+    }
+
+button.print-btn {
+    margin: 20px;
+    padding: 10px 20px;
+    font-size: 14px;
+    background-color: #003366;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+button.print-btn:hover { background-color: #34495e; }
+
+@media print {
+    body { 
+        background: #fff;
+         display: block; margin: 0;
+          padding: 0;
+         }
+    .certificate-wrapper { 
+        box-shadow: none;
+         width: auto;
+          padding: 20px; }
+    button.print-btn { 
+        display: none;
+     }
+}
+</style>
+</head>
+<body>
+<div class="certificate-wrapper">
+    <div class="certificate">
+        <div class="header">
+          <img src="{% static 'img/vmclogo.jpg' %}" class="logo-top" alt="Logo">
+            <h3>Abhinav Education Society’s</h3>
+            <h1>VISHWABHARTI MAHAVIDALAYA CIDCO, NANDED</h1>
+            <p class="institute">(Institute Established in 2008, Approved By AICTE & Affiliated to SRTMUN)</p>
+            <div class="ref-date">
+                <span>Ref. No.: {{ unique_ref }}</span>
+                <span>Date: {{ today }}</span>
+            </div>
+        </div>
+
+        <h2>BONAFIDE CERTIFICATE</h2>
+
+        <p>This is to certify that <b> Mr/Ms. </b><b>{{ student.name }}</b>, son/daughter of <b>{{ student.father_name }}</b>, is a bonafide student of this college, studying in <b>{{ student.class_name }}</b> during the academic year <b>{{ student.academic_year }}</b>.</p>
+
+        <p>His/Her date of birth according to our college record is <b>{{ student.dob|date:'d/m/Y' }}</b>.</p>
+
+        <p>He/She bears a good moral character.</p>
+
+        <div class="qr">
+            <p>QR Verification:</p>
+            <img src="{{ qr_url }}" width="100" alt="QR Code">
+        </div>
+
+        <div class="footer">
+            PRINCIPAL
+        </div>
+    </div>
+</div>
+
+<button class="print-btn" onclick="window.print()">Print Certificate</button>
+</body>
+</html>
