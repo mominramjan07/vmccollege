@@ -40,7 +40,7 @@ MIDDLEWARE = [
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
 ]
 
-ROOT_URLCONF = "MominKart.urls"
+ROOT_URLCONF = "VMC.urls"
 
 TEMPLATES = [
     {
@@ -57,7 +57,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = "MominKart.wsgi.application"
+WSGI_APPLICATION = "VMC.wsgi.application"
 
 # ---------------- Database ----------------
 # SQLite चलेगा; Render पर PostgreSQL चाहिए तो DATABASE_URL env var सेट करें
