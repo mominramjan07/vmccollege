@@ -25,7 +25,7 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
-    "MominKart",   # आपका app
+    "VMC",   # आपका app
 ]
 
 # ---------------- Middleware ----------------
