@@ -4,17 +4,12 @@ import os
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 # ---------------- Security ----------------
-SECRET_KEY = os.environ.get(
-    "SECRET_KEY",
-    "django-insecure-e67-rjw4^u6^l+4fb5f(m@yh-8e1ibtzr31=m3y%o+hk!28s00"  # fallback
-)
+SECRET_KEY = os.getenv('SECRET_KEY', 'django-insecure-default-key')
 DEBUG = False
-
-# Render पर अपना डोमेन डालें
 ALLOWED_HOSTS = [
-    "127.0.0.1",
-    "localhost",
-    "your-app-name.onrender.com",  # <-- अपने Render URL से बदलें
+    '127.0.0.1',
+    'localhost',
+    '.onrender.com'
 ]
 
 # ---------------- Installed apps ----------------
@@ -25,13 +20,13 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
-    "VMC",   # आपका app
+    "certificates",   # ✅ आपका app
 ]
 
 # ---------------- Middleware ----------------
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
-    "whitenoise.middleware.WhiteNoiseMiddleware",   # Render पर static serve
+    "whitenoise.middleware.WhiteNoiseMiddleware",   # ✅ static files serve
     "django.contrib.sessions.middleware.SessionMiddleware",
     "django.middleware.common.CommonMiddleware",
     "django.middleware.csrf.CsrfViewMiddleware",
@@ -45,7 +40,7 @@ ROOT_URLCONF = "VMC.urls"
 TEMPLATES = [
     {
         "BACKEND": "django.template.backends.django.DjangoTemplates",
-        "DIRS": [BASE_DIR / "templates"],
+        "DIRS": [BASE_DIR / "templates"],   # ✅ project-level templates
         "APP_DIRS": True,
         "OPTIONS": {
             "context_processors": [
@@ -60,7 +55,6 @@ TEMPLATES = [
 WSGI_APPLICATION = "VMC.wsgi.application"
 
 # ---------------- Database ----------------
-# SQLite चलेगा; Render पर PostgreSQL चाहिए तो DATABASE_URL env var सेट करें
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.sqlite3",
@@ -78,21 +72,14 @@ AUTH_PASSWORD_VALIDATORS = [
 
 # ---------------- I18N ----------------
 LANGUAGE_CODE = "en-us"
-TIME_ZONE = "UTC"
+TIME_ZONE = "Asia/Kolkata"   # ✅ India time zone
 USE_I18N = True
 USE_TZ = True
 
 # ---------------- Static & Media ----------------
 STATIC_URL = "/static/"
-STATICFILES_DIRS = [BASE_DIR / "static"]
-STATIC_ROOT = BASE_DIR / "staticfiles"   # collectstatic यहीं store करेगा
-STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
+STATICFILES_DIRS = [BASE_DIR / "static"]   # development के लिए
+STATIC_ROOT = BASE_DIR / "staticfiles"     # production collectstatic
 
 MEDIA_URL = "/media/"
 MEDIA_ROOT = BASE_DIR / "media"
-
-DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
-
-# ---------------- Login redirect ----------------
-LOGIN_URL = "user_login"
-LOGIN_REDIRECT_URL = "homepage"

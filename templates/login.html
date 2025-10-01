@@ -1,9 +1,9 @@
 {% load static %}
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <meta charset="utf-8">
-    <title>Bonafide Form - VMC</title>
+    <meta charset="UTF-8">
+    <title>Login - VMC Bonafide</title>
     <style>
         body {
             font-family: 'Arial', sans-serif;
@@ -12,6 +12,7 @@
             padding: 0;
         }
 
+        /* -------- Header -------- */
         header {
             background-color: #003366;
             color: white;
@@ -34,59 +35,34 @@
             font-weight: bold;
         }
 
-        /* Navbar buttons */
-        .navbar {
-            position: absolute;
-            right: 20px;
-            top: 15px;
-        }
-
-        .navbar a {
-            color: white;
-            text-decoration: none;
-            margin-left: 15px;
-            padding: 8px 12px;
-            background-color: #00509e;
-            border-radius: 5px;
-            font-size: 14px;
-            transition: background-color 0.3s ease;
-        }
-
-        .navbar a:hover {
-            background-color: #001f4d;
-        }
-
-        header p {
-            margin: 5px 0 0 0;
-            font-size: 14px;
-        }
-
-        .form-container {
+        /* -------- Login Box -------- */
+        .login-container {
             background-color: #fff;
-            max-width: 600px;
-            margin: 40px auto;
+            max-width: 400px;
+            margin: 60px auto;
             padding: 40px;
             border-radius: 12px;
             box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+            text-align: center;
         }
 
-        .form-container h2 {
-            text-align: center;
+        .login-container h2 {
             color: #003366;
-            margin-bottom: 30px;
-            font-size: 24px;
+            margin-bottom: 25px;
+            font-size: 22px;
         }
 
         form p {
-            margin-bottom: 20px;
+            margin-bottom: 18px;
+            text-align: left;
         }
 
-        input, select {
+        input {
             width: 100%;
             padding: 12px 15px;
             border: 1px solid #ccc;
             border-radius: 6px;
-            font-size: 16px;
+            font-size: 15px;
             box-sizing: border-box;
         }
 
@@ -95,23 +71,25 @@
             padding: 14px;
             background-color: #003366;
             color: white;
-            font-size: 18px;
+            font-size: 17px;
             border: none;
             border-radius: 6px;
             cursor: pointer;
             transition: background-color 0.3s ease;
+            margin-top: 10px;
         }
 
         button:hover {
             background-color: #001f4d;
         }
 
+        /* -------- Footer -------- */
         footer {
             background-color: #003366;
             color: white;
             text-align: center;
             padding: 15px 0;
-            margin-top: 50px;
+            margin-top: 60px;
             font-size: 14px;
         }
 
@@ -125,51 +103,37 @@
         }
 
         @media (max-width: 600px) {
-            .form-container {
-                padding: 20px;
-                margin: 20px;
+            .login-container {
+                margin: 30px;
+                padding: 25px;
             }
 
             header img {
-                filter: drop-shadow(1px 1px 20px rgb(249, 249, 247));
-                height: 100px;
-                display: inline;
-                font-size: 200px;
-            }
-
-            .navbar {
-                position: static;
-                margin-top: 10px;
-                text-align: center;
-            }
-
-            .navbar a {
-                margin-left: 5px;
-                margin-right: 5px;
-                padding: 6px 10px;
-                font-size: 13px;
+                filter: drop-shadow(1px 1px 15px #fff);
+                height: 80px;
+                width: 80px;
             }
         }
     </style>
 </head>
 <body>
+    <!-- 🔹 Header -->
     <header>
         <img src="{% static 'img/logo.png.png' %}" alt="College Logo">
         <h1>Vishwabharti Mahavidalaya, CIDCO, Nanded</h1>
-        
-        <!-- Navbar -->
-        
     </header>
 
-    <div class="form-container">
-        <h2>Enter Student Details for Bonafide Certificate</h2>
+    <!-- 🔹 Login Form -->
+    <div class="login-container">
+        <h2>🔐 Please Login</h2>
         <form method="post">
             {% csrf_token %}
             {{ form.as_p }}
-            <button type="submit">Generate Bonafide</button>
+            <button type="submit">Login</button>
         </form>
     </div>
 
+    <!-- 🔹 Footer -->
     <footer>
         &copy; 2025 Vishwabharti Mahavidalaya. All Rights Reserved. | Designed & Developed by Momin Ramjan
     </footer>
